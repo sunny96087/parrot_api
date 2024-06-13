@@ -1,0 +1,66 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "ciaocraft api",
+    "description": "六角課程團體專題用 api"
+  },
+  "host": "ciaocraft-api.onrender.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Collections-front",
+      "description": "收藏 (前台)"
+    },
+    {
+      "name": "Feedback-front",
+      "description": "回饋 (前台)"
+    },
+    {
+      "name": "Upload-front",
+      "description": "上傳圖片 (前台)"
+    },
+    {
+      "name": "Upload-back",
+      "description": "上傳圖片 (後台)"
+    },
+    {
+      "name": "Upload-manage",
+      "description": "上傳圖片 (平台管理員)"
+    },
+    {
+      "name": "HR",
+      "description": "--- 分隔線 - 以下是參考的 ---"
+    },
+    {
+      "name": "Index",
+      "description": "首頁"
+    },
+    {
+      "name": "Upload",
+      "description": "上傳圖片"
+    },
+    {
+      "name": "Email",
+      "description": "信箱驗證"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Index"
+        ],
+        "description": "express 預設首頁，目前沒用",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
