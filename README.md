@@ -1,9 +1,16 @@
-# DIY 課程預約網站 CiaoCraft - api
+# 鸚鸚食堂 parrot - api
 
-六角 Node.js 入門班團體專題後端 api
+鸚鸚食堂 api
+
+## 功能
+食物計算機
+鸚鵡食物表
+鸚鵡百科
+醫療資訊
+回饋信箱
 
 ## 瀏覽網站
-[CiaoCraft]()
+[鸚鸚食堂]()
 
 ## 前端 github
 [Link]()
@@ -27,7 +34,6 @@
 
 ## 開發者
 > 2fish
-> shuan
 
 ### 聯絡我們
 > [Email](mailto:yu13142013@gmail.com)

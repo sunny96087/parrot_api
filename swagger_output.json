@@ -2,31 +2,35 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "ciaocraft api",
-    "description": "六角課程團體專題用 api"
+    "title": "parrot api",
+    "description": "鸚鸚食堂 api"
   },
-  "host": "ciaocraft-api.onrender.com",
+  "host": "localhost:3666",
   "basePath": "/",
   "tags": [
     {
-      "name": "Collections-front",
-      "description": "收藏 (前台)"
+      "name": "Parrot",
+      "description": "鸚鸚"
     },
     {
-      "name": "Feedback-front",
-      "description": "回饋 (前台)"
+      "name": "Info",
+      "description": "資訊"
     },
     {
-      "name": "Upload-front",
-      "description": "上傳圖片 (前台)"
+      "name": "Food",
+      "description": "食物"
     },
     {
-      "name": "Upload-back",
-      "description": "上傳圖片 (後台)"
+      "name": "Parrot",
+      "description": "鸚鸚"
     },
     {
-      "name": "Upload-manage",
-      "description": "上傳圖片 (平台管理員)"
+      "name": "Feedback",
+      "description": "回饋"
+    },
+    {
+      "name": "Upload",
+      "description": "上傳圖片"
     },
     {
       "name": "HR",
@@ -46,6 +50,7 @@
     }
   ],
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -55,6 +60,466 @@
           "Index"
         ],
         "description": "express 預設首頁，目前沒用",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/food/calculatefeed": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "每日飼料計算",
+        "description": "每日飼料計算",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "會員 ID"
+                },
+                "weight": {
+                  "type": "string",
+                  "example": "體重"
+                },
+                "activity": {
+                  "type": "string",
+                  "example": "活動量"
+                },
+                "calories": {
+                  "type": "string",
+                  "example": "卡路里"
+                },
+                "protein": {
+                  "type": "string",
+                  "example": "蛋白質"
+                },
+                "fat": {
+                  "type": "string",
+                  "example": "脂肪"
+                },
+                "carbs": {
+                  "type": "string",
+                  "example": "碳水化合物"
+                }
+              },
+              "required": [
+                "memberId",
+                "weight",
+                "activity",
+                "calories",
+                "protein",
+                "fat",
+                "carbs"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/food/calculatefood": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "每日鮮食計算",
+        "description": "每日鮮食計算",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "會員 ID"
+                },
+                "weight": {
+                  "type": "string",
+                  "example": "體重"
+                },
+                "activity": {
+                  "type": "string",
+                  "example": "活動量"
+                },
+                "foodId": {
+                  "type": "string",
+                  "example": "食物 ID"
+                }
+              },
+              "required": [
+                "memberId",
+                "weight",
+                "activity",
+                "foodId"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/food/calculateParrotFoodIntake": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "根據指定熱量需求 > 計算應攝取的食物量",
+        "description": "根據指定熱量需求 > 計算應攝取的食物量",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "會員 ID"
+                },
+                "foodId": {
+                  "type": "string",
+                  "example": "食物 ID"
+                },
+                "requiredCalories": {
+                  "type": "string",
+                  "example": "需要補充的熱量"
+                }
+              },
+              "required": [
+                "memberId",
+                "foodId",
+                "requiredCalories"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/food/calculateParrotFeedIntake": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "根據指定熱量需求 > 計算應攝取的飼料量",
+        "description": "根據指定熱量需求 > 計算應攝取的飼料量",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "會員 ID"
+                },
+                "requiredCalories": {
+                  "type": "string",
+                  "example": "需要補充的熱量"
+                },
+                "calories": {
+                  "type": "string",
+                  "example": "卡路里"
+                },
+                "protein": {
+                  "type": "string",
+                  "example": "蛋白質"
+                },
+                "fat": {
+                  "type": "string",
+                  "example": "脂肪"
+                },
+                "carbs": {
+                  "type": "string",
+                  "example": "碳水化合物"
+                }
+              },
+              "required": [
+                "memberId",
+                "requiredCalories",
+                "calories",
+                "protein",
+                "fat",
+                "carbs"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/food/recommendFoods": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "每日攝取量計算 -> 推薦 2-8 種食物 (考慮熱量、蛋白質、脂肪、碳水化合物)",
+        "description": "每日攝取量計算 -> 推薦 2-8 種食物 (考慮熱量、蛋白質、脂肪、碳水化合物)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "會員 ID"
+                },
+                "weight": {
+                  "type": "string",
+                  "example": "體重"
+                },
+                "activity": {
+                  "type": "string",
+                  "example": "活動量"
+                }
+              },
+              "required": [
+                "memberId",
+                "weight",
+                "activity"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/parrot/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parrot"
+        ],
+        "summary": "新增鸚鵡資料",
+        "description": "新增鸚鵡資料",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "chineseName": {
+                  "type": "string",
+                  "example": "中文名稱"
+                },
+                "englishName": {
+                  "type": "string",
+                  "example": "英文名稱"
+                },
+                "chineseNickname": {
+                  "type": "string",
+                  "example": "中文暱稱"
+                },
+                "englishNickname": {
+                  "type": "string",
+                  "example": "英文暱稱"
+                },
+                "size": {
+                  "type": "string",
+                  "example": "體型"
+                },
+                "weightRange": {
+                  "type": "string",
+                  "example": "體重範圍(g)"
+                },
+                "lifespan": {
+                  "type": "string",
+                  "example": "預期壽命(年)"
+                },
+                "nativeHabitat": {
+                  "type": "string",
+                  "example": "原生長地"
+                },
+                "additionalInfo": {
+                  "type": "string",
+                  "example": "額外說明"
+                },
+                "advantages": {
+                  "type": "string",
+                  "example": "飼養優點"
+                },
+                "disadvantages": {
+                  "type": "string",
+                  "example": "飼養缺點"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "描述"
+                }
+              },
+              "required": [
+                "chineseName",
+                "englishName",
+                "chineseNickname",
+                "englishNickname",
+                "size",
+                "weightRange",
+                "lifespan",
+                "nativeHabitat",
+                "additionalInfo",
+                "advantages",
+                "disadvantages",
+                "description"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/info/parrots": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "取得所有鸚鵡資料",
+        "description": "取得所有鸚鵡資料",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/info/poisonousFoods": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "取得所有不可食用食物資料",
+        "description": "取得所有不可食用食物資料",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/info/freshFoods": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "取得所有可食用食物資料",
+        "description": "取得所有可食用食物資料",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/info/hospitals": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "取得所有醫院資料",
+        "description": "取得所有醫院資料",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/feedback/": {
+      "post": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "新增回饋",
+        "description": "新增回饋",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "contactPerson": {
+                  "type": "string",
+                  "example": "姓名"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "電話"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "信箱"
+                },
+                "feedback": {
+                  "type": "string",
+                  "example": "內容"
+                },
+                "source": {
+                  "type": "string",
+                  "example": "從哪裡得知此網站"
+                }
+              },
+              "required": [
+                "contactPerson",
+                "phone",
+                "email",
+                "feedback",
+                "source"
+              ]
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""

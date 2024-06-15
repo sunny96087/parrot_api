@@ -5,38 +5,42 @@ dotenv.config({ path: "./config.env" });
 const doc = {
   info: {
     version: "1.0.0",
-    title: "ciaocraft api",
-    description: "六角課程團體專題用 api",
+    title: "parrot api",
+    description: "鸚鸚食堂 api",
   },
   // * 開發
-  // host: 'localhost:3666',
-  // schemes: ['http', 'https'],
+  host: "localhost:3666",
+  schemes: ["http", "https"],
   // * 部署
-  host: "ciaocraft-api.onrender.com",
-  schemes: ["https"],
+  // host: "ciaocraft-api.onrender.com",
+  // schemes: ["https"],
 
   basePath: "/",
   tags: [
-    // by default: empty Array
     {
-      name: "Collections-front",
-      description: "收藏 (前台)",
+      name: "Parrot",
+      description: "鸚鸚",
     },
     {
-      name: "Feedback-front",
-      description: "回饋 (前台)",
+      name: "Info",
+      description: "資訊",
     },
     {
-      name: "Upload-front",
-      description: "上傳圖片 (前台)",
+      name: "Food",
+      description: "食物",
     },
     {
-      name: "Upload-back",
-      description: "上傳圖片 (後台)",
+      name: "Parrot",
+      description: "鸚鸚",
     },
     {
-      name: "Upload-manage",
-      description: "上傳圖片 (平台管理員)",
+      name: "Feedback",
+      description: "回饋",
+    },
+
+    {
+      name: "Upload",
+      description: "上傳圖片",
     },
     {
       name: "HR",

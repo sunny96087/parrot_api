@@ -6,7 +6,10 @@ var cookieParser = require("cookie-parser"); // 引入 cookie-parser 中間件�
 var morgan = require("morgan"); // 引入 morgan 中間件，用於日誌記錄
 var cors = require("cors"); // 引入允許跨網域套件 cors
 const logger = require("./logger"); // 引入 logger.js => Winston 日誌
-const { updateFinishedOrders, updateExpiredOrders } = require("./utils/cronJobs"); // 引入 cronJobs.js 定時任務
+const {
+  updateFinishedOrders,
+  updateExpiredOrders,
+} = require("./utils/cronJobs"); // 引入 cronJobs.js 定時任務
 const swaggerUi = require("swagger-ui-express"); // swagger
 const swaggerFile = require("./swagger_output.json");
 const mongoose = require("mongoose");
@@ -42,21 +45,10 @@ mongoose
 // updateExpiredOrders();
 
 // 引入自訂路由 routes
-// const postsRouter = require("./routes/posts");
-// var usersRouter = require("./routes/users");
-// const uploadRouter = require("./routes/upload");
-// const emailRouter = require("./routes/email");
-
-// const vendorsRouter = require("./routes/vendors");
-// const membersRouter = require("./routes/member");
-// const authRouter = require("./routes/auth");
-// const feedbackRouter = require("./routes/feedback");
-// const orderRouter = require("./routes/order");
-// const platformRouter = require("./routes/platform");
-// const collectionRouter = require("./routes/collection");
-// const courseRouter = require("./routes/course");
-// const teacherRouter = require("./routes/teachers");
-// const messageRouter = require("./routes/message");
+const foodRouter = require("./routes/food");
+const parrotRouter = require("./routes/parrot");
+const infoRouter = require("./routes/info");
+const feedbackRouter = require("./routes/feedback");
 
 // 預設首頁
 var indexRouter = require("./routes/index");
@@ -97,21 +89,11 @@ app.use(express.static(path.join(__dirname, "public")));
 // 掛載路由
 app.use("/", indexRouter);
 // app.use("/users", usersRouter);
-// app.use("/posts", postsRouter);
-// app.use("/upload", uploadRouter);
-// app.use("/email", emailRouter);
+app.use("/food", foodRouter);
+app.use("/parrot", parrotRouter);
+app.use("/info", infoRouter);
+app.use("/feedback", feedbackRouter);
 
-// app.use("/auth", authRouter);
-// app.use("/members", membersRouter);
-// app.use("/orders", orderRouter);
-// app.use("/collections", collectionRouter);
-// app.use("/feedbacks", feedbackRouter);
-// app.use("/platforms", platformRouter);
-// app.use("/courses", courseRouter);
-
-// app.use("/vendors", vendorsRouter);
-// app.use("/teachers", teacherRouter);
-// app.use("/messages", messageRouter);
 
 app.use((req, res, next) => {
   // 設置 CSP 頭部
