@@ -12,7 +12,7 @@ const doc = {
   // host: "localhost:3666",
   // schemes: ["http", "https"],
   // * 部署
-  host: "https://parrot-api-55iv.onrender.com/",
+  host: "parrot-api-55iv.onrender.com",
   schemes: ["https"],
 
   basePath: "/",
