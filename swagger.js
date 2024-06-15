@@ -9,11 +9,11 @@ const doc = {
     description: "鸚鸚食堂 api",
   },
   // * 開發
-  host: "localhost:3666",
-  schemes: ["http", "https"],
+  // host: "localhost:3666",
+  // schemes: ["http", "https"],
   // * 部署
-  // host: "ciaocraft-api.onrender.com",
-  // schemes: ["https"],
+  host: "https://parrot-api-55iv.onrender.com/",
+  schemes: ["https"],
 
   basePath: "/",
   tags: [
@@ -68,4 +68,4 @@ swaggerAutogen(outputFile, endpointsFiles, doc); // swaggerAutogen 的方法
 
 // Demo
 // http://localhost:3666/v1
-// https://ciaocraft-api.onrender.com
+// https://parrot-api-55iv.onrender.com/
