@@ -424,6 +424,20 @@
         ],
         "summary": "取得所有鸚鵡資料",
         "description": "取得所有鸚鵡資料",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "關鍵字",
+            "enum": [
+              "小型",
+              "中型",
+              "大型"
+            ],
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -438,6 +452,15 @@
         ],
         "summary": "取得所有不可食用食物資料",
         "description": "取得所有不可食用食物資料",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "關鍵字",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -452,6 +475,15 @@
         ],
         "summary": "取得所有可食用食物資料",
         "description": "取得所有可食用食物資料",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "關鍵字",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -466,6 +498,15 @@
         ],
         "summary": "取得所有醫院資料",
         "description": "取得所有醫院資料",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "description": "地區",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""

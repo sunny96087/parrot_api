@@ -8,6 +8,8 @@ const foodRecommendSchema = new mongoose.Schema(
       ref: "Member", // 參照 Member 模型
       // 會員 ID，若為訪客則為空
     },
+    weight: Number, // 體重 (kg)
+    activity: String, // activity
     dailyNeeds: {
       // 每日需求
       calories: Number, // 每日所需熱量 (kcal/day)

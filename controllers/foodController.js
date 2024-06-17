@@ -49,9 +49,9 @@ const foodController = {
     const carbsNeed = adjustedBMR * 0.6; // 碳水化合物需求占總熱量的60%
 
     // 將營養需求從卡路里轉換為克數
-    const proteinInGrams = (proteinNeed / 4).toFixed(2); // 每克蛋白質提供4卡路里
-    const fatInGrams = (fatNeed / 9).toFixed(2); // 每克脂肪提供9卡路里
-    const carbsInGrams = (carbsNeed / 4).toFixed(2); // 每克碳水化合物提供4卡路里
+    const dailyProteinNeed = (proteinNeed / 4).toFixed(2); // 每克蛋白質提供4卡路里
+    const dailyFatNeed = (fatNeed / 9).toFixed(2); // 每克脂肪提供9卡路里
+    const dailyCarbsNeed = (carbsNeed / 4).toFixed(2); // 每克碳水化合物提供4卡路里
 
     // 計算每日所需飼料量
     let dailyFeedAmount = (adjustedBMR / calories) * 100; // 每日飼料量以100克為單位
@@ -88,20 +88,23 @@ const foodController = {
       protein,
       fat,
       carbs,
-      BMR: BMR.toFixed(2) + " kcal/day", // 基礎代謝率 (BMR)
-      adjustedBMR: adjustedBMR.toFixed(2) + " kcal/day", // 調整後的 BMR
-      dailyCalorieNeed: adjustedBMR.toFixed(2) + " kcal/day", // 每日所需熱量
-      dailyFeedAmount: dailyFeedAmount.toFixed(2) + " g/day", // 每日飼料量
+      BMR: BMR.toFixed(2), // 基礎代謝率 (BMR)
+      adjustedBMR: adjustedBMR.toFixed(2), // 調整後的 BMR
+      dailyCalorieNeed: adjustedBMR.toFixed(2), // 每日所需熱量
+      dailyProteinNeed: dailyProteinNeed, // 每日所需蛋白質
+      dailyFatNeed: dailyFatNeed, // 每日所需脂肪
+      dailyCarbsNeed: dailyCarbsNeed, // 每日所需碳水化合物
+      dailyFeedAmount: dailyFeedAmount.toFixed(2), // 每日飼料量
       nutrientsProvided: {
-        protein: totalProtein.toFixed(2) + " g/day", // 每日飼料中的蛋白質克數
-        fat: totalFat.toFixed(2) + " g/day", // 每日飼料中的脂肪克數
-        carbs: totalCarbs.toFixed(2) + " g/day", // 每日飼料中的碳水化合物克數
+        protein: totalProtein.toFixed(2), // 每日飼料中的蛋白質克數
+        fat: totalFat.toFixed(2), // 每日飼料中的脂肪克數
+        carbs: totalCarbs.toFixed(2), // 每日飼料中的碳水化合物克數
       },
       caloriesProvided: {
-        total: totalCalories.toFixed(2) + " kcal/day", // 每日飼料提供的總熱量
-        protein: proteinCalories.toFixed(2) + " kcal/day", // 蛋白質提供的熱量
-        fat: fatCalories.toFixed(2) + " kcal/day", // 脂肪提供的熱量
-        carbs: carbsCalories.toFixed(2) + " kcal/day", // 碳水化合物提供的熱量
+        total: totalCalories.toFixed(2), // 每日飼料提供的總熱量
+        protein: proteinCalories.toFixed(2), // 蛋白質提供的熱量
+        fat: fatCalories.toFixed(2), // 脂肪提供的熱量
+        carbs: carbsCalories.toFixed(2), // 碳水化合物提供的熱量
       },
     };
 
@@ -154,6 +157,11 @@ const foodController = {
     const fatNeed = dailyCalories * 0.2; // 脂肪需求占總熱量的20%
     const carbsNeed = dailyCalories * 0.6; // 碳水化合物需求占總熱量的60%
 
+    // 營養素需求計算 (每日所需熱量的20%為蛋白質需求，20%為脂肪需求，60%為碳水化合物需求)
+    const dailyProteinNeed = (dailyCalories * 0.2) / 4; // 蛋白質每克4卡
+    const dailyFatNeed = (dailyCalories * 0.2) / 9; // 脂肪每克9卡
+    const dailyCarbsNeed = (dailyCalories * 0.6) / 4; // 碳水化合物每克4卡
+
     // 計算該食物可攝取量
     const foodCalories = freshFood.calories;
     const foodProtein = freshFood.protein;
@@ -194,22 +202,25 @@ const foodController = {
       weight,
       activity,
       food: freshFood,
-      BMR: BMR.toFixed(2) + " kcal/day", // 基礎代謝率 (BMR)
-      adjustedBMR: adjustedBMR.toFixed(2) + " kcal/day", // 調整後的 BMR
-      dailyCalories: dailyCalories.toFixed(2) + " kcal/day", // 每日所需熱量
-      maxIntake: foodMaxIntake.toFixed(2) + " g/day", // 最大攝取量
-      foodIntake: maxFoodIntake.toFixed(2) + " g/day", // 實際攝取量
+      BMR: BMR.toFixed(2), // 基礎代謝率 (BMR)
+      adjustedBMR: adjustedBMR.toFixed(2), // 調整後的 BMR
+      dailyCalories: dailyCalories.toFixed(2), // 每日所需熱量
+      dailyProteinNeed: dailyProteinNeed.toFixed(2), // 每日所需蛋白質
+      dailyFatNeed: dailyFatNeed.toFixed(2), // 每日所需脂肪
+      dailyCarbsNeed: dailyCarbsNeed.toFixed(2), // 每日所需碳水化合物
+      maxIntake: foodMaxIntake.toFixed(2), // 最大攝取量
+      foodIntake: maxFoodIntake.toFixed(2), // 實際攝取量
       nutrientsProvided: {
-        protein: proteinIntake + " g/day", // 每日食物中的蛋白質克數
-        fat: fatIntake + " g/day", // 每日食物中的脂肪克數
-        carbs: carbsIntake + " g/day", // 每日食物中的碳水化合物克數
+        protein: proteinIntake, // 每日食物中的蛋白質克數
+        fat: fatIntake, // 每日食物中的脂肪克數
+        carbs: carbsIntake, // 每日食物中的碳水化合物克數
       },
-      foodProvidedCalories: foodProvidedCalories + " kcal/day", // 食物提供的總熱量
-      caloriesDifference: caloriesDifference + " kcal/day", // 熱量差異
+      foodProvidedCalories: foodProvidedCalories, // 食物提供的總熱量
+      caloriesDifference: caloriesDifference, // 熱量差異
       detailedNutrientsCalories: {
-        protein: proteinCalories + " kcal/day", // 蛋白質提供的熱量
-        fat: fatCalories + " kcal/day", // 脂肪提供的熱量
-        carbs: carbsCalories + " kcal/day", // 碳水化合物提供的熱量
+        protein: proteinCalories, // 蛋白質提供的熱量
+        fat: fatCalories, // 脂肪提供的熱量
+        carbs: carbsCalories, // 碳水化合物提供的熱量
       },
     };
 
@@ -312,9 +323,14 @@ const foodController = {
     };
 
     // 將計算結果存入資料庫
-    await FoodConversion.create(data);
+    const result = await FoodConversion.create(data);
 
-    handleSuccess(res, data, "計算食物攝取量成功");
+    // 填充關聯食物資料
+    const populatedResult = await FoodConversion.findById(result._id).populate(
+      "foodId"
+    );
+
+    handleSuccess(res, populatedResult, "計算食物攝取量成功");
   },
 
   // * 根據指定熱量需求 > 計算應攝取的飼料量
@@ -399,9 +415,9 @@ const foodController = {
       carbs: carbs, // 飼料的碳水化合物
       requiredFeedIntake: bestMatchFeedIntake.toFixed(2), // 最接近需求的飼料攝取量
       nutrientsProvided: {
-        protein: bestMatchFeedIntake * (protein / 100).toFixed(2), // 實際攝取的蛋白質量
-        fat: bestMatchFeedIntake * (fat / 100).toFixed(2), // 實際攝取的脂肪量
-        carbs: bestMatchFeedIntake * (carbs / 100).toFixed(2), // 實際攝取的碳水化合物量
+        protein: Number((bestMatchFeedIntake * (protein / 100)).toFixed(2)), // 實際攝取的蛋白質量
+        fat: Number((bestMatchFeedIntake * (fat / 100)).toFixed(2)), // 實際攝取的脂肪量
+        carbs: Number((bestMatchFeedIntake * (carbs / 100)).toFixed(2)), // 實際攝取的碳水化合物量
       },
       nutrientsCalories: {
         protein: bestMatchProteinCalories.toFixed(2), // 蛋白質提供的熱量
@@ -531,7 +547,7 @@ const foodController = {
         note: food.note,
         maxIntake: food.maxIntake,
         intakeAmount: selectedFoodIntakes[index].toFixed(2),
-        nutrition: {
+        nutrientsProvided: {
           protein: (food.protein * intake).toFixed(2),
           fat: (food.fat * intake).toFixed(2),
           carbs: (food.carbs * intake).toFixed(2),
@@ -560,6 +576,9 @@ const foodController = {
 
     // 返回結果
     let data = {
+      memberId: memberId || null,
+      weight,
+      activity,
       dailyNeeds: {
         // 每日需求
         calories: dailyCalories.toFixed(2),

@@ -62,6 +62,11 @@ const parrotSchema = new mongoose.Schema(
       required: true,
       // 描述
     },
+    imgUrl: {
+      type: String,
+      required: true,
+      // 圖片連結
+    },
   },
   { timestamps: true }
 );

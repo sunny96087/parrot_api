@@ -27,59 +27,71 @@ const foodCalculationSchema = new mongoose.Schema(
       // 食物
     },
     BMR: {
-      type: String,
-      // 基礎代謝率
+      type: Number,
+      // 基礎代謝率 (BMR) (kcal/day)
     },
     adjustedBMR: {
-      type: String,
-      // 調整後的基礎代謝率
+      type: Number,
+      // 調整後的基礎代謝率 (kcal/day)
     },
     dailyCalories: {
-      type: String,
-      // 每日所需熱量
+      type: Number,
+      // 每日所需熱量 (kcal/day)
+    },
+    dailyProteinNeed: {
+      type: Number,
+      // 每日所需蛋白質 (g/day)
+    },
+    dailyFatNeed: {
+      type: Number,
+      // 每日所需脂肪 (g/day)
+    },
+    dailyCarbsNeed: {
+      type: Number,
+      // 每日所需碳水化合物 (g/day)
     },
     maxIntake: {
-      type: String,
-      // 最大攝取量
+      type: Number,
+      // 最大攝取量 (g/day)
     },
     foodIntake: {
-      type: String,
-      // 實際攝取量
+      type: Number,
+      // 實際攝取量 (g/day)
     },
     nutrientsProvided: {
       protein: {
-        type: String,
-        // 每日食物中的蛋白質克數
+        type: Number,
+        // 每日食物中的蛋白質克數 (g/day)
       },
       fat: {
-        type: String,
-        // 每日食物中的脂肪克數
+        type: Number,
+        // 每日食物中的脂肪克數 (g/day)
       },
       carbs: {
-        type: String,
-        // 每日食物中的碳水化合物克數
+        type: Number,
+        // 每日食物中的碳水化合物克數 (g/day)
       },
     },
     foodProvidedCalories: {
-      type: String,
-      // 食物提供的總熱量
+      type: Number,
+      // 食物提供的總熱量 (kcal/day)
     },
     caloriesDifference: {
-      type: String,
-      // 熱量差異
+      type: Number,
+      // 熱量差異 (kcal/day)
     },
     detailedNutrientsCalories: {
       protein: {
-        type: String,
-        // 蛋白質提供的熱量
+        type: Number,
+        // 蛋白質提供的熱量 (kcal/day)
       },
       fat: {
-        type: String,
-        // 脂肪提供的熱量
+        type: Number,
+        // 脂肪提供的熱量 (kcal/day)
       },
       carbs: {
-        type: String,
-        // 碳水化合物提供的熱量
+        type: Number,
+        // 碳水化合物提供的熱量 (kcal/day)
       },
     },
   },

@@ -23,80 +23,95 @@ const feedCalculationSchema = new mongoose.Schema(
     calories: {
       type: Number,
       required: true,
-      // 每100克飼料的熱量（卡路里）
+      // 每100克飼料的熱量 (kcal/100g)
     },
     protein: {
       type: Number,
       required: true,
-      // 每100克飼料中的蛋白質百分比
+      // 每100克飼料中的蛋白質百分比 (g/100g)
     },
     fat: {
       type: Number,
       required: true,
-      // 每100克飼料中的脂肪百分比
+      // 每100克飼料中的脂肪百分比 (g/100g)
     },
     carbs: {
       type: Number,
       required: true,
-      // 每100克飼料中的碳水化合物百分比
+      // 每100克飼料中的碳水化合物百分比 (g/100g)
     },
     BMR: {
-      type: String,
+      type: Number,
       required: true,
-      // 基礎代謝率（BMR，卡路里/天）
+      // 基礎代謝率（BMR）(kcal/day)
     },
     adjustedBMR: {
-      type: String,
+      type: Number,
       required: true,
-      // 調整後的基礎代謝率（卡路里/天）
+      // 調整後的基礎代謝率（kcal/day）
     },
     dailyCalorieNeed: {
-      type: String,
+      type: Number,
       required: true,
-      // 每日所需熱量（卡路里/天）
+      // 每日所需熱量（kcal/day）
+    },
+    dailyProteinNeed: {
+      type: Number,
+      required: true,
+      // 每日所需蛋白質（g/day）
+    },
+    dailyFatNeed: {
+      type: Number,
+      required: true,
+      // 每日所需脂肪（g/day）
+    },
+    dailyCarbsNeed: {
+      type: Number,
+      required: true,
+      // 每日所需碳水化合物（g/day）
     },
     dailyFeedAmount: {
-      type: String,
+      type: Number,
       required: true,
-      // 每日飼料量（克/天）
+      // 每日飼料量（g/day）
     },
     nutrientsProvided: {
       protein: {
-        type: String,
+        type: Number,
         required: true,
-        // 每日飼料提供的蛋白質（克/天）
+        // 每日飼料提供的蛋白質（g/day）
       },
       fat: {
-        type: String,
+        type: Number,
         required: true,
-        // 每日飼料提供的脂肪（克/天）
+        // 每日飼料提供的脂肪（g/day）
       },
       carbs: {
-        type: String,
+        type: Number,
         required: true,
-        // 每日飼料提供的碳水化合物（克/天）
+        // 每日飼料提供的碳水化合物（g/day）
       },
     },
     caloriesProvided: {
       total: {
-        type: String,
+        type: Number,
         required: true,
-        // 每日飼料提供的總熱量（卡路里/天）
+        // 每日飼料提供的總熱量（kcal/day）
       },
       protein: {
-        type: String,
+        type: Number,
         required: true,
-        // 蛋白質提供的熱量（卡路里/天）
+        // 蛋白質提供的熱量（kcal/day）
       },
       fat: {
-        type: String,
+        type: Number,
         required: true,
-        // 脂肪提供的熱量（卡路里/天）
+        // 脂肪提供的熱量（kcal/day）
       },
       carbs: {
-        type: String,
+        type: Number,
         required: true,
-        // 碳水化合物提供的熱量（卡路里/天）
+        // 碳水化合物提供的熱量（kcal/day）
       },
     },
   },
