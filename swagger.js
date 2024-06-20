@@ -12,7 +12,7 @@ const doc = {
   // host: "localhost:3666",
   // schemes: ["http", "https"],
   // * 部署
-  host: "parrot-api-55iv.onrender.com",
+  host: "parrot-api.2fishs.com",
   schemes: ["https"],
 
   basePath: "/",
@@ -69,3 +69,5 @@ swaggerAutogen(outputFile, endpointsFiles, doc); // swaggerAutogen 的方法
 // Demo
 // http://localhost:3666/v1
 // https://parrot-api-55iv.onrender.com/
+// https://parrot-api.2fishs.com/
+
