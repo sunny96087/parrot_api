@@ -481,8 +481,6 @@ const foodController = {
     // 從數據庫中獲取所有食物
     const allFoods = await FreshFood.find({});
 
-    // todo
-
     // 隨機選擇主要食物
     const selectRandomFood = (foods) => {
       return foods[Math.floor(Math.random() * foods.length)];
@@ -535,26 +533,28 @@ const foodController = {
       calories: 0,
     };
 
-    const foodDetails = selectedFoods.map((food, index) => {
-      let intake = selectedFoodIntakes[index] / 100;
-      totalNutrition.protein += food.protein * intake;
-      totalNutrition.fat += food.fat * intake;
-      totalNutrition.carbs += food.carbs * intake;
-      totalNutrition.calories += food.calories * intake;
-      return {
-        foodId: food._id,
-        name: food.name,
-        note: food.note,
-        maxIntake: food.maxIntake,
-        intakeAmount: selectedFoodIntakes[index].toFixed(2),
-        nutrientsProvided: {
-          protein: (food.protein * intake).toFixed(2),
-          fat: (food.fat * intake).toFixed(2),
-          carbs: (food.carbs * intake).toFixed(2),
-          calories: (food.calories * intake).toFixed(2),
-        },
-      };
-    });
+    const foodDetails = selectedFoods
+      .map((food, index) => {
+        let intake = selectedFoodIntakes[index] / 100;
+        totalNutrition.protein += food.protein * intake;
+        totalNutrition.fat += food.fat * intake;
+        totalNutrition.carbs += food.carbs * intake;
+        totalNutrition.calories += food.calories * intake;
+        return {
+          foodId: food._id,
+          name: food.name,
+          note: food.note,
+          maxIntake: food.maxIntake,
+          intakeAmount: selectedFoodIntakes[index].toFixed(2),
+          nutrientsProvided: {
+            protein: (food.protein * intake).toFixed(2),
+            fat: (food.fat * intake).toFixed(2),
+            carbs: (food.carbs * intake).toFixed(2),
+            calories: (food.calories * intake).toFixed(2),
+          },
+        };
+      })
+      .filter((food) => parseFloat(food.intakeAmount) > 0); // 過濾掉攝取量為0的食物
 
     // 計算每種營養素提供的熱量
     const proteinCalories = totalNutrition.protein * 4; // 蛋白质提供的热量
