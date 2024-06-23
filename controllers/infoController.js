@@ -8,6 +8,18 @@ const FreshFood = require("../models/freshFood");
 const Hospital = require("../models/hospital");
 
 const infoController = {
+  // * 取得單一鸚鵡資料
+  getParrot: async (req, res, next) => {
+    const { id } = req.params;
+
+    // 根據 id 查找鸚鵡
+    const parrot = await Parrot.findById(id);
+    if (!parrot) {
+      return next(appError(404, "找不到鸚鵡"));
+    }
+    handleSuccess(res, parrot, "取得單一鸚鵡資料成功");
+  },
+
   // * 取得所有鸚鵡資料，支持根據 size 和關鍵字進行查詢
   getParrots: async (req, res, next) => {
     const { size, keyword } = req.query;

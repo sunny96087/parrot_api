@@ -417,6 +417,29 @@
         }
       }
     },
+    "/info/parrots/{id}": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "取得單一鸚鵡資料",
+        "description": "取得單一鸚鵡資料",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "鸚鵡 ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/info/parrots": {
       "get": {
         "tags": [

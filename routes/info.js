@@ -3,6 +3,22 @@ const router = express.Router();
 const handleErrorAsync = require("../utils/handleErrorAsync");
 const infoController = require("../controllers/infoController");
 
+// * 取得單一鸚鵡資料
+router.get(
+  "/parrots/:id",
+  handleErrorAsync(infoController.getParrot)
+  /*  #swagger.tags = ['Info']
+    #swagger.summary = '取得單一鸚鵡資料'
+    #swagger.description = '取得單一鸚鵡資料'
+    #swagger.parameters['obj'] = {
+      in: 'path',
+      name: 'id',
+      description: '鸚鵡 ID',
+      required: true
+    }
+    */
+);
+
 // * 取得所有鸚鵡資料
 router.get(
   "/parrots",
