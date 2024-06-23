@@ -111,6 +111,13 @@ const infoController = {
     const hospitals = await Hospital.find(query);
     handleSuccess(res, hospitals, "取得所有醫院資料成功");
   },
+
+  // * 喚醒資料庫
+  wakeUpDatabase: async (req, res, next) => {
+    // 喚醒資料庫
+    await mongoose.connection.db.admin().ping();
+    handleSuccess(res, null, "喚醒資料庫成功");
+  }
 };
 
 module.exports = infoController;

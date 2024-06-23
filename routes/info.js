@@ -96,4 +96,14 @@ router.get(
     */
 );
 
+// * 喚醒資料庫
+router.get(
+  "/wakeup",
+  handleErrorAsync(infoController.wakeUpDatabase)
+  /*  #swagger.tags = ['Info']
+    #swagger.summary = '喚醒資料庫'
+    #swagger.description = '喚醒資料庫'
+    */
+);
+
 module.exports = router;

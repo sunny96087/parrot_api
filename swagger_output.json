@@ -537,6 +537,20 @@
         }
       }
     },
+    "/info/wakeup": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "喚醒資料庫",
+        "description": "喚醒資料庫",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/feedback/": {
       "post": {
         "tags": [
