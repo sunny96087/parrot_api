@@ -115,9 +115,17 @@ const infoController = {
   // * 喚醒資料庫
   wakeUpDatabase: async (req, res, next) => {
     // 喚醒資料庫
-    await mongoose.connection.db.admin().ping();
-    handleSuccess(res, null, "喚醒資料庫成功");
-  }
+    // await mongoose.connection.db.admin().ping();
+    // handleSuccess(res, null, "喚醒資料庫成功");
+
+    // 查詢一筆鸚鵡資料
+    const parrot = await Parrot.findOne();
+    if (!parrot) {
+      return next(appError(404, "沒有找到鸚鵡資料，喚醒資料庫失敗"));
+    }
+    // 返回查詢到的鸚鵡資料
+    handleSuccess(res, [], "喚醒資料庫成功");
+  },
 };
 
 module.exports = infoController;
